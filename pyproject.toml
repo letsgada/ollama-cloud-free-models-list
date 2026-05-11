@@ -1,0 +1,18 @@
+[project]
+name = "ollama-cloud-free-models-list"
+version = "0.1.0"
+description = "Daily check of which Ollama Cloud models are callable on the free tier."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.32",
+    "python-dotenv>=1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,67 @@
+name: Update models.json
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "models-json"
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Probe Ollama Cloud
+        env:
+          OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+        run: uv run python main.py
+
+      - name: Commit models.json if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain models.json)" ]; then
+            git add models.json
+            git commit -m "chore: update models.json"
+            git push
+          else
+            echo "models.json unchanged"
+          fi
+
+      - name: Stage Pages site
+        run: |
+          mkdir -p _site
+          cp models.json _site/models.json
+          cat > _site/index.html <<'HTML'
+          <!doctype html>
+          <meta charset="utf-8">
+          <title>Ollama Cloud free models</title>
+          <h1>Ollama Cloud free models</h1>
+          <p>Updated daily. Machine-readable list: <a href="models.json">models.json</a></p>
+          HTML
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4
