@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T11:09:13+00:00",
+  "updated_at": "2026-05-15T11:13:31+00:00",
   "models": [
     "cogito-2.1:671b",
     "devstral-2:123b",
@@ -9,7 +9,6 @@
     "gemma3:4b",
     "gemma4:31b",
     "glm-4.6",
-    "glm-4.7",
     "gpt-oss:120b",
     "gpt-oss:20b",
     "minimax-m2",
