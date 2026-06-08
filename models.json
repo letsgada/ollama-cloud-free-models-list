@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-07T11:01:14+00:00",
+  "updated_at": "2026-06-08T12:57:50+00:00",
   "models": [
     "cogito-2.1:671b",
     "devstral-2:123b",
@@ -14,6 +14,7 @@
     "gpt-oss:20b",
     "minimax-m2",
     "minimax-m2.1",
+    "minimax-m2.5",
     "minimax-m3",
     "ministral-3:14b",
     "ministral-3:3b",
