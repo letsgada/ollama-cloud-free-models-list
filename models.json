@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T11:52:15+00:00",
+  "updated_at": "2026-06-24T11:38:08+00:00",
   "models": [
     "devstral-2:123b",
     "devstral-small-2:24b",
@@ -20,7 +20,6 @@
     "nemotron-3-super",
     "nemotron-3-ultra",
     "qwen3-coder-next",
-    "qwen3-coder:480b",
-    "rnj-1:8b"
+    "qwen3-coder:480b"
   ]
 }
