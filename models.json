@@ -1,11 +1,12 @@
 {
-  "updated_at": "2026-10-31T14:53:51+00:00",
+  "updated_at": "2026-11-01T15:33:13+00:00",
   "models": [
     "beam",
     "gemma4:31b",
     "gpt-oss:120b",
     "gpt-oss:20b",
     "nemotron-3-nano:30b",
-    "nemotron-3-super"
+    "nemotron-3-super",
+    "nemotron-3-ultra"
   ]
 }
